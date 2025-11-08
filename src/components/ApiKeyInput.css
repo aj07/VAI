@@ -1,0 +1,115 @@
+.api-key-container {
+  background: linear-gradient(135deg, #1e1e2e 0%, #2d2d44 100%);
+  border: 1px solid #404060;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.api-key-header {
+  margin-bottom: 15px;
+}
+
+.api-key-header h3 {
+  margin: 0 0 8px 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #e0e0ff;
+}
+
+.warning {
+  margin: 0;
+  font-size: 13px;
+  color: #ff9800;
+  line-height: 1.4;
+}
+
+.api-key-input-group {
+  margin-bottom: 15px;
+}
+
+.api-key-input-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #b0b0d0;
+  margin-bottom: 8px;
+}
+
+.input-wrapper {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.api-key-input {
+  flex: 1;
+  padding: 10px 12px;
+  background: rgba(30, 30, 46, 0.6);
+  border: 1px solid #505070;
+  border-radius: 6px;
+  color: #e0e0ff;
+  font-size: 14px;
+  font-family: 'Monaco', 'Courier New', monospace;
+  transition: all 0.2s ease;
+}
+
+.api-key-input:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 8px rgba(99, 102, 241, 0.3);
+}
+
+.api-key-input::placeholder {
+  color: #707090;
+}
+
+.toggle-btn {
+  padding: 8px 12px;
+  background: rgba(99, 102, 241, 0.1);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  border-radius: 6px;
+  color: #6366f1;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.2s ease;
+}
+
+.toggle-btn:hover {
+  background: rgba(99, 102, 241, 0.2);
+  border-color: rgba(99, 102, 241, 0.5);
+}
+
+.api-key-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  background: rgba(76, 175, 80, 0.1);
+  border: 1px solid rgba(76, 175, 80, 0.3);
+  border-radius: 6px;
+}
+
+.key-status {
+  font-size: 13px;
+  color: #4caf50;
+  font-weight: 500;
+}
+
+.clear-btn {
+  padding: 6px 12px;
+  background: rgba(244, 67, 54, 0.1);
+  border: 1px solid rgba(244, 67, 54, 0.3);
+  border-radius: 4px;
+  color: #f44336;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.clear-btn:hover {
+  background: rgba(244, 67, 54, 0.2);
+  border-color: rgba(244, 67, 54, 0.5);
+}
