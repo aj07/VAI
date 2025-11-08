@@ -1,0 +1,99 @@
+.token-selector-container {
+  background: linear-gradient(135deg, #1e1e2e 0%, #2d2d44 100%);
+  border: 1px solid #404060;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.token-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #b0b0d0;
+  margin-bottom: 10px;
+}
+
+.select-wrapper {
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.token-select {
+  width: 100%;
+  padding: 12px 14px;
+  background: rgba(30, 30, 46, 0.6);
+  border: 1px solid #505070;
+  border-radius: 6px;
+  color: #e0e0ff;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236366f1' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 18px;
+  padding-right: 40px;
+}
+
+.token-select:hover {
+  border-color: #6366f1;
+  background-color: rgba(30, 30, 46, 0.8);
+}
+
+.token-select:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 8px rgba(99, 102, 241, 0.3);
+}
+
+.token-select:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.token-select option {
+  background: #1e1e2e;
+  color: #e0e0ff;
+  padding: 8px;
+}
+
+.token-info {
+  display: flex;
+  gap: 20px;
+  padding: 12px;
+  background: rgba(99, 102, 241, 0.1);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  border-radius: 6px;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.info-label {
+  font-size: 12px;
+  color: #909090;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+.info-value {
+  font-size: 14px;
+  color: #e0e0ff;
+  font-weight: 600;
+}
+
+.info-value.v2 {
+  color: #4caf50;
+}
+
+.info-value.v3 {
+  color: #2196f3;
+}
