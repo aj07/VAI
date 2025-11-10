@@ -14,63 +14,83 @@ const PriceChart = ({ priceData, token, isConnected, title = 'Trenches API' }) =
   const [priceChange, setPriceChange] = useState(0);
   const [lastUpdate, setLastUpdate] = useState(null);
 
+  console.log('PriceChart rendering:', { token, isConnected, hasData: !!priceData });
+
   // Initialize chart
   useEffect(() => {
-    if (!chartContainer.current) return;
+    if (!chartContainer.current) {
+      console.warn('Chart container not available');
+      return;
+    }
 
-    const width = chartContainer.current.clientWidth;
-    const height = 400;
+    try {
+      const width = chartContainer.current.clientWidth || 600;
+      const height = 400;
 
-    chart.current = createChart(chartContainer.current, {
-      layout: {
-        textColor: '#d1d5db',
-        background: {
-          type: 'solid',
-          color: '#111827',
+      console.log('Initializing chart with dimensions:', { width, height });
+
+      // Create the chart instance
+      const chartInstance = createChart(chartContainer.current, {
+        layout: {
+          textColor: '#d1d5db',
+          background: '#111827',
+          fontSize: 12,
         },
-      },
-      grid: {
-        vertLines: {
-          color: '#1f2937',
+        grid: {
+          vertLines: {
+            color: '#1f2937',
+          },
+          horzLines: {
+            color: '#1f2937',
+          },
         },
-        hLines: {
-          color: '#1f2937',
+        timeScale: {
+          timeVisible: true,
+          secondsVisible: true,
         },
-      },
-      timeScale: {
-        timeVisible: true,
-        secondsVisible: true,
-      },
-      width: width,
-      height: height,
-    });
+        width: width,
+        height: height,
+      });
 
-    candleSeries.current = chart.current.addCandlestickSeries({
-      upColor: '#4caf50',
-      downColor: '#f44336',
-      borderDownColor: '#f44336',
-      borderUpColor: '#4caf50',
-      wickDownColor: '#f44336',
-      wickUpColor: '#4caf50',
-    });
+      chart.current = chartInstance;
 
-    // Handle window resize
-    const handleResize = () => {
-      if (chart.current && chartContainer.current) {
-        chart.current.applyOptions({
-          width: chartContainer.current.clientWidth,
-        });
+      // Verify chart instance before adding series
+      if (!chartInstance || typeof chartInstance.addCandlestickSeries !== 'function') {
+        console.error('Chart instance not properly initialized', chartInstance);
+        return;
       }
-    };
 
-    window.addEventListener('resize', handleResize);
+      // Add candlestick series
+      candleSeries.current = chartInstance.addCandlestickSeries({
+        upColor: '#4caf50',
+        downColor: '#f44336',
+        borderDownColor: '#f44336',
+        borderUpColor: '#4caf50',
+        wickDownColor: '#f44336',
+        wickUpColor: '#4caf50',
+      });
 
-    return () => {
-      window.removeEventListener('resize', handleResize);
-      if (chart.current) {
-        chart.current.remove();
-      }
-    };
+      // Handle window resize
+      const handleResize = () => {
+        if (chart.current && chartContainer.current) {
+          chart.current.applyOptions({
+            width: chartContainer.current.clientWidth,
+          });
+        }
+      };
+
+      window.addEventListener('resize', handleResize);
+
+      return () => {
+        window.removeEventListener('resize', handleResize);
+        if (chart.current) {
+          chart.current.remove();
+          chart.current = null;
+        }
+      };
+    } catch (error) {
+      console.error('Error initializing chart:', error);
+    }
   }, []);
 
   // Update chart with price data

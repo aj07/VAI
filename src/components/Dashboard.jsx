@@ -16,6 +16,8 @@ const Dashboard = () => {
   // Hook for Trenches WebSocket
   const trendches = useWebSocket(apiKey, selectedToken);
 
+  console.log('Dashboard rendering:', { apiKey: apiKey ? '***' : 'empty', selectedToken, isConnected: trendches.isConnected });
+
   const handleApiKeyChange = (newKey) => {
     setApiKey(newKey);
   };

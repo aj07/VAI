@@ -111,4 +111,6 @@
   border-radius: 6px;
   overflow: hidden;
   background: #111827;
+  min-height: 400px;
+  width: 100%;
 }
